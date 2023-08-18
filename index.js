@@ -11,14 +11,16 @@ addAnExpenseBtn.addEventListener('click', display);
 
 // function to display data on screen
 function display() {
-	const userData = {
-		 amountData : amount.value,
-		 descData : desc.value,
-		 categoryData : category.value
-	}
-	
 
-	if (userData.amountData === '' || userData.descData === '' || userData.categoryData === '') {
+	const amountData = amount.value;
+	const descData = desc.value;
+	const categoryData = category.value;
+	const userData = {
+		amountData ,
+		descData ,
+		categoryData
+	}
+	if (amountData === '' || descData === '' || categoryData === '') {
 		alert('Empty fields are not allowed');
 	} else {
 		// creating li for storing data
@@ -27,13 +29,13 @@ function display() {
 		li.textContent = userData.amountData + " : " + userData.descData + " : " + userData.categoryData;
 
 		// SAVING DATA TO LOCAL STORAGE
-		// const expenseData = amountData + " : " + descData + " : " + categoryData;
-		// localStorage.setItem(categoryData, expenseData);
+		// const expenseData = userData.amountData + " : " + userData.descData + " : " + userData.categoryData;
+		localStorage.setItem(userData.categoryData, userData);
 
 		// adding data in crud crud 
-		axios.post('https://crudcrud.com/api/10fc0c18016d4677a699ae22d003d8c1/addData',userData)
-			.then( (res)=> console.log(res))
-			.catch( (err)=> console.log(err));
+		// axios.post('https://crudcrud.com/api/10fc0c18016d4677a699ae22d003d8c1/addData',userData)
+		// 	.then( (res)=> console.log(res))
+		// 	.catch( (err)=> console.log(err));
 
 
 		//  DELETE BUTTON
@@ -72,3 +74,12 @@ function display() {
 		category.value = '';
 	}
 }
+
+// window.addEventListener('DOMContentLoaded', ()=> {
+// 	axios.get('https://crudcrud.com/api/10fc0c18016d4677a699ae22d003d8c1/addData')
+// 		.then( (res) => {
+// 			console.log(res);
+// 			display(res);
+// 		})
+// 		.catch( (err) => console.error(err));
+// })
