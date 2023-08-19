@@ -1,39 +1,39 @@
 //  getting all elements
-const addAnExpenseBtn = document.querySelector('#add-expense-btn');
+const addItem = document.querySelector('#add-expense-btn');
 const amount = document.querySelector('#amount');
 const desc = document.querySelector('#desc');
 const category = document.querySelector('#category');
-const expenseList = document.querySelector('#items');
+const itemList = document.querySelector('#items');
 const categoryInput = amount.value;
 
 //  event listner on add expense button
-addAnExpenseBtn.addEventListener('click', display);
+addItem.addEventListener('click', display);
 
 // function to display data on screen
 function display() {
 
-	const amountData = amount.value;
-	const descData = desc.value;
-	const categoryData = category.value;
-	const userData = {
-		amountData ,
-		descData ,
-		categoryData
+	const ItemName = amount.value;
+	const itemDesc = desc.value;
+	const itemPrice = category.value;
+	const itemData = {
+		ItemName ,
+		itemDesc ,
+		itemPrice
 	}
-	if (amountData === '' || descData === '' || categoryData === '') {
+	if (ItemName === '' || itemDesc === '' || itemPrice === '') {
 		alert('Empty fields are not allowed');
 	} else {
 		// creating li for storing data
 		const li = document.createElement('li');
 		li.className = 'margin-top';
-		li.textContent = userData.amountData + " : " + userData.descData + " : " + userData.categoryData;
+		li.textContent = itemData.ItemName + " : " + itemData.itemDesc + " : " + itemData.itemPrice;
 
 		// SAVING DATA TO LOCAL STORAGE
-		// const expenseData = userData.amountData + " : " + userData.descData + " : " + userData.categoryData;
-		localStorage.setItem(userData.categoryData, userData);
+		// const expenseData = itemData.ItemName + " : " + itemData.itemDesc + " : " + itemData.itemPrice;
+		localStorage.setItem(itemData.itemPrice, itemData);
 
 		// adding data in crud crud 
-		// axios.post('https://crudcrud.com/api/10fc0c18016d4677a699ae22d003d8c1/addData',userData)
+		// axios.post('https://crudcrud.com/api/10fc0c18016d4677a699ae22d003d8c1/addData',itemData)
 		// 	.then( (res)=> console.log(res))
 		// 	.catch( (err)=> console.log(err));
 
@@ -45,8 +45,8 @@ function display() {
 		deleteButton.className = 'btn btn-outline-danger float-end m-lg-1 delete';
 
 		deleteButton.onclick = () => {
-			localStorage.removeItem(userData.categoryData);
-			expenseList.removeChild(li);
+			localStorage.removeItem(itemData.itemPrice);
+			itemList.removeChild(li);
 		};
 		// EDIT BUTTON
 		const editButton = document.createElement('input');
@@ -55,18 +55,18 @@ function display() {
 		editButton.className = 'btn btn-outline-primary float-end m-lg-1 edit';
 
 		editButton.onclick = () => {
-			localStorage.removeItem(userData.categoryData);
-			expenseList.removeChild(li);
-			document.querySelector('#amount').value = userData.amountData ;
- 			document.querySelector('#desc').value = userData.descData ;
-			document.querySelector('#category').value = userData.categoryData ;
+			localStorage.removeItem(itemData.itemPrice);
+			itemList.removeChild(li);
+			document.querySelector('#amount').value = itemData.ItemName ;
+ 			document.querySelector('#desc').value = itemData.itemDesc ;
+			document.querySelector('#category').value = itemData.itemPrice ;
 		};
 
 
 		// appending the child element
 		li.appendChild(deleteButton);
 		li.appendChild(editButton);
-		expenseList.appendChild(li);
+		itemList.appendChild(li);
 
 		// clear all fields
 		amount.value = '';
