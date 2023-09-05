@@ -14,27 +14,23 @@
 	<div class="container margin-top">
 		<form onsubmit="saveData(event)">
 			<div class="row margin-top">
-				<label for="Name">PRODUCT NAME</label>
+				<label for="Name">NAME</label>
 				<input type="text" name="Name" id="Name" class="input">
 			</div>
 			<div class="row margin-top">
-				<label for="desc">PRODUCT DESCRIPTION</label>
-				<input type="text" name="desc" id="desc" class="input">
+				<label for="desc">DESCRIPTION</label>
+				<input type="text" name="Desc" id="Desc" class="input">
 			</div>
 			<div class="row margin-top">
-				<label for="price">PRODUCT PRICE</label>
+				<label for="price">PRICE</label>
 				<input type="text" name="Price" id="Price" class="input">
-			</div>
-			<div class="row margin-top">
-				<label for="quantity">PRODUCT QUANTITY</label>
-				<input type="text" name="quantity" id="quantity" class="input">
 			</div>
 			<div class="row margin-top">
 				<button type="submit" class="btn btn-outline-primary margin-top" id="add-item-btn">Add Item</button>
 			</div>
 		</form>
 
-		<div class="row margin-top" id="items"> </div>
+		<ul class="row margin-top" id="items"> </ul>
 
 	</div>
 
