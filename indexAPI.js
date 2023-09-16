@@ -18,11 +18,12 @@ async function saveData(event) {
 	if (Name === '' || Desc === '' || Price === '') {
 		alert('Empty fields are not allowed');
 	}
-	if (Button.id) {
+	if (!Button.id) {
+		console.log('inside if block');
 		axios.put('http://localhost:4000/add-expense/' + Button.id, expenseData)
 			.then((res) => {
 				expenseData.id = Button.id;
-				display(expenseData);
+				display(res.data);
 			})
 			.catch((err) => console.log(err));
 			expenseData.id = '';
